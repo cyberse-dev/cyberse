@@ -1,14 +1,13 @@
 <div class="search-bar" [class.dropdown-open]="dropdownOpened">
-    <i class="fas fa-search"></i>
     <input
         type="text"
         role="search"
         placeholder="Enter your search query here..."
         [formControl]="searchInput"
     />
-    <span class="selected-option" (click)="toggleDropdown()"
-        >{{ currentlySelectedOptionName }} <i class="fas fa-angle-down"></i
-    ></span>
+    <span class="selected-option" (click)="toggleDropdown()">{{
+        currentlySelectedOptionName
+    }}</span>
 </div>
 <div class="dropdown" *ngIf="dropdownOpened">
     <cyberse-selectable-list
