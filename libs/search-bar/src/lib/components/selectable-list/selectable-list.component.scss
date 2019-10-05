@@ -1,0 +1,27 @@
+:host {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    div {
+        padding: 10px 45px;
+        cursor: pointer;
+
+        color: #9b9b9b;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid #efefef;
+        }
+
+        &.selected,
+        &.selected:hover {
+            color: white;
+            background-color: #4a4a4a;
+        }
+
+        &:hover {
+            background-color: #f4f3f3;
+        }
+    }
+}

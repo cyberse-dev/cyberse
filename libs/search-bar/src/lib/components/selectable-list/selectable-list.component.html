@@ -1,0 +1,7 @@
+<div
+    *ngFor="let option of options"
+    (click)="onSelect(option)"
+    [class.selected]="currentlySelected === option.id"
+>
+    {{ option.name }}
+</div>
