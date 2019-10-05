@@ -124,6 +124,44 @@
                     }
                 }
             }
+        },
+        "search-bar": {
+            "projectType": "library",
+            "root": "libs/search-bar",
+            "sourceRoot": "libs/search-bar/src",
+            "prefix": "cyberse",
+            "architect": {
+                "build": {
+                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "options": {
+                        "tsConfig": "libs/search-bar/tsconfig.lib.json",
+                        "project": "libs/search-bar/ng-package.json"
+                    }
+                },
+                "lint": {
+                    "builder": "@angular-devkit/build-angular:tslint",
+                    "options": {
+                        "tsConfig": [
+                            "libs/search-bar/tsconfig.lib.json",
+                            "libs/search-bar/tsconfig.spec.json"
+                        ],
+                        "exclude": ["**/node_modules/**", "!libs/search-bar/**"]
+                    }
+                },
+                "test": {
+                    "builder": "@nrwl/jest:jest",
+                    "options": {
+                        "jestConfig": "libs/search-bar/jest.config.js",
+                        "tsConfig": "libs/search-bar/tsconfig.spec.json",
+                        "setupFile": "libs/search-bar/src/test-setup.ts"
+                    }
+                }
+            },
+            "schematics": {
+                "@nrwl/angular:component": {
+                    "styleext": "scss"
+                }
+            }
         }
     },
     "cli": {

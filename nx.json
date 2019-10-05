@@ -13,6 +13,9 @@
         },
         "core": {
             "tags": []
+        },
+        "search-bar": {
+            "tags": ["ui"]
         }
     }
 }
