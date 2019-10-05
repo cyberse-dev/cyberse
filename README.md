@@ -1,5 +1,7 @@
 # Cyberse
 
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=cyberse-dev_cyberse&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=cyberse-dev_cyberse)
+
 This project was generated using [Nx](https://nx.dev).
 
 <p align="center"><img src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png" width="450"></p>
