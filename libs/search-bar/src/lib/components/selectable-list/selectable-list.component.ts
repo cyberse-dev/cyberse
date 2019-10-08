@@ -18,10 +18,8 @@ export class SelectableListComponent {
     @Output() selectionChanged = new EventEmitter<SelectableListOption>();
 
     onSelect(option: SelectableListOption) {
-        if (this.currentlySelected !== option.id) {
-            this.currentlySelected = option.id;
-            this.selectionChanged.emit(option);
-        }
+        this.currentlySelected = option.id;
+        this.selectionChanged.emit(option);
     }
 }
 

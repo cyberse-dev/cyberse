@@ -6,6 +6,7 @@ import {
     Output,
     EventEmitter,
     OnDestroy,
+    OnChanges,
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
@@ -20,7 +21,7 @@ import { SelectableListOption } from '../selectable-list/selectable-list.compone
     styleUrls: ['./search-bar.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SearchBarComponent implements OnInit, OnDestroy {
+export class SearchBarComponent implements OnInit, OnDestroy, OnChanges {
     @Input() currentlySelected: string;
     /** Debounce time in milliseconds */
     @Input() debounce = 400;
@@ -31,19 +32,25 @@ export class SearchBarComponent implements OnInit, OnDestroy {
 
     currentlySelectedOptionName = '';
     dropdownOpened = false;
-    searchInput = new FormControl();
+    searchInput = new FormControl('');
 
     private searchInputSubscription: Subscription;
 
-    ngOnInit() {
+    ngOnChanges() {
         if (this.options.length === 0) {
             throw new Error('The list of options cannot be empty');
         }
 
         if (this.currentlySelected === undefined) {
             this.onSelect(this.options[0]);
+        } else {
+            this.currentlySelectedOptionName = this.options.find(
+                option => option.id === this.currentlySelected,
+            ).name;
         }
+    }
 
+    ngOnInit() {
         this.searchInputSubscription = this.searchInput.valueChanges
             .pipe(
                 debounceTime(this.debounce),
@@ -53,10 +60,11 @@ export class SearchBarComponent implements OnInit, OnDestroy {
     }
 
     onSelect(option: SelectableListOption) {
+        this.dropdownOpened = false;
+
         if (this.currentlySelected !== option.id) {
             this.currentlySelected = option.id;
             this.currentlySelectedOptionName = option.name;
-            this.dropdownOpened = false;
 
             this.selectedOptionChanged.emit(option);
         }
@@ -67,6 +75,8 @@ export class SearchBarComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.searchInputSubscription.unsubscribe();
+        if (this.searchInputSubscription) {
+            this.searchInputSubscription.unsubscribe();
+        }
     }
 }

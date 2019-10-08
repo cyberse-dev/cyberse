@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import {
@@ -83,27 +83,6 @@ describe('SelectableListComponent', () => {
         expect(listElementDivs[selectedElementNo].classList).toContain(
             'selected',
         );
-    });
-
-    it('should emit twice for the same selection', () => {
-        const selectedElementNo = 2;
-        const listElementDivs = (fixture.nativeElement as HTMLElement).querySelectorAll(
-            'div',
-        );
-
-        listElementDivs[selectedElementNo].click();
-
-        fixture.detectChanges();
-
-        expect(testHost.selectedValue.id).toBe(
-            testOptions[selectedElementNo].id,
-        );
-
-        testHost.selectedValue = undefined;
-        listElementDivs[selectedElementNo].click();
-        fixture.detectChanges();
-
-        expect(testHost.selectedValue).toBeUndefined();
     });
 
     it('should be able to be passed a default selection', () => {
