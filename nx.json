@@ -16,6 +16,18 @@
         },
         "search-bar": {
             "tags": ["ui"]
+        },
+        "hangman-api": {
+            "tags": []
+        },
+        "hangman-e2e": {
+            "tags": []
+        },
+        "hangman": {
+            "tags": []
+        },
+        "hangman-models": {
+            "tags": ["model"]
         }
     }
 }

@@ -15,8 +15,10 @@
         "skipLibCheck": true,
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
+        "strictNullChecks": true,
         "paths": {
-            "@cyberse/search-bar": ["libs/search-bar/src/index.ts"]
+            "@cyberse/search-bar": ["libs/search-bar/src/index.ts"],
+            "@cyberse/hangman-models": ["libs/hangman-models/src/index.ts"]
         }
     },
     "exclude": ["node_modules", "tmp"]
