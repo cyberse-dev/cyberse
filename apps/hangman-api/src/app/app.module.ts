@@ -11,4 +11,4 @@ import { GameService } from './game/game.service';
     controllers: [AppController, GameController],
     providers: [AppService, GameService],
 })
-export class AppModule { }
+export class AppModule {}

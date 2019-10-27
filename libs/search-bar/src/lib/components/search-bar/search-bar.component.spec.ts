@@ -194,7 +194,7 @@ describe('SearchBarComponent', () => {
         const selectedOptionContainer = (fixture.nativeElement as HTMLElement).querySelector(
             '.selected-option',
         ) as HTMLSpanElement;
-        
+
         selectedOptionContainer.click();
 
         fixture.detectChanges();
