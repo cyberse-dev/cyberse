@@ -1,9 +1,10 @@
 import {
     Component,
-    OnInit,
     ChangeDetectionStrategy,
     Input,
     HostListener,
+    Output,
+    EventEmitter,
 } from '@angular/core';
 
 @Component({
@@ -12,15 +13,12 @@ import {
     styleUrls: ['./letter-button.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LetterButtonComponent implements OnInit {
+export class LetterButtonComponent {
     @Input() letter: string;
-
-    constructor() {}
-
-    ngOnInit() {}
+    @Output() letterClicked = new EventEmitter<string>();
 
     @HostListener('click')
     clicked() {
-        console.log(this.letter);
+        this.letterClicked.emit(this.letter);
     }
 }
